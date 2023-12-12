@@ -35,6 +35,14 @@ export class ProductDetailsComponent implements OnInit {
     numReviews: 0,
     reviews: [],
   };
+  buttonsDisabled = false;
+
+  likeOrDislike() {
+    if (!this.buttonsDisabled) {
+      this.buttonsDisabled = true;
+    }
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,

@@ -1,5 +1,5 @@
 {
-  "name": "angular-amazona",
+  "name": "angular",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/basir/angular-amazona.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/basir/angular-amazona/issues"
+    "url": "http://xyz.com"
   },
-  "homepage": "https://github.com/basir/angular-amazona#readme"
+  "homepage": ""
 }

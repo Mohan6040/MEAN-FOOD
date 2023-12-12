@@ -1,12 +1,3 @@
-# Amazona ECommerce Website 
-
-# Angular & Node Tutorial - Full ECommerce in 5 Hours [2021]
-Welcome to my Angular and Node tutorial to build a fully-functional e-commerce website exactly like amazon. Open your code editor and follow me for the next hours to build an e-commerce website using MEAN stack (MongoDB, ExpressJS, Angular and Node.JS).
-
-## Demo Website
-
-- 👉 Heroku : [https://angular-amazona.herokuapp.com](https://angular-amazona.herokuapp.com)
-
 
 ## You Will Learn
 
@@ -64,9 +55,7 @@ $ npm start
 - Run http://localhost:4200/login
 - Enter admin email and password and click login
 
-## Support
 
-- Contact Instructor: [Basir](mailto:basir.jafarzadeh@gmail.com)
 
 ## Promo Video Script
 Hello and Welcome to my coding course to build an ecommerce website like amazon by MERN Stack. In this course You will learn the essential tools and skills to design, develop and deploy a fully-function website like amazon using Angular in frontend and Node and MongoDB in backend.

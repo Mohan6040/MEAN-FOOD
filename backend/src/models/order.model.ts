@@ -68,7 +68,7 @@ export class Order {
   @prop({ required: true, default: 0 })
   public shippingPrice!: number;
   @prop({ required: true, default: 0 })
-  public taxPrice!: number;
+  public DiscountPrice!: number;
   @prop({ required: true, default: 0 })
   public totalPrice!: number;
   @prop({ required: true, default: false })

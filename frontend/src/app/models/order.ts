@@ -32,7 +32,7 @@ export interface Order {
   paymentMethod: string;
   itemsCount: number;
   itemsPrice: number;
-  taxPrice: number;
+  DiscountPrice: number;
   shippingPrice: number;
   totalPrice: number;
 }

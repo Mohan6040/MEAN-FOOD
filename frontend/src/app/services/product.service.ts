@@ -8,6 +8,7 @@ import { Product, ProductFilter } from '../models/product';
   providedIn: 'root',
 })
 export class ProductService {
+  getFile: any;
   getAdminProducts() {
     return this.http.get(`${environment.apiUrl}/api/products`, {
       responseType: 'json',

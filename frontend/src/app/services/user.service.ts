@@ -12,6 +12,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class UserService {
+  [x: string]: any;
   constructor(private http: HttpClient) {}
 
   getUsers(): Observable<any> {
@@ -30,6 +31,11 @@ export class UserService {
     return this.http.put<User>(
       `${environment.apiUrl}/api/users/${user._id}`,
       user
+    );
+  }
+  deleteuser(userId: string): Observable<void> {
+    return this.http.delete<void>(
+      `${environment.apiUrl}/api/users/${userId}`
     );
   }
 }

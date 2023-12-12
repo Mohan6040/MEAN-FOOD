@@ -32,7 +32,7 @@ export class SearchComponent {
       this.searchProducts();
     });
 
-    this.titleService.setTitle('Amazona');
+    this.titleService.setTitle('Foodie');
   }
 
   ngOnInit() {}

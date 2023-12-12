@@ -21,7 +21,7 @@ export interface Cart {
   paymentMethod: string;
   itemsCount: number;
   itemsPrice: number;
-  taxPrice: number;
+  DiscountPrice: number;
   shippingPrice: number;
   totalPrice: number;
 }

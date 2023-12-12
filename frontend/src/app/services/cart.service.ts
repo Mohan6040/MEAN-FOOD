@@ -23,7 +23,7 @@ const defaultCart: Cart = {
   paymentMethod: '',
   itemsCount: 0,
   itemsPrice: 0,
-  taxPrice: 0,
+  DiscountPrice: 0,
   shippingPrice: 0,
   totalPrice: 0,
 };
@@ -132,21 +132,20 @@ export class CartService {
     this.currentCartSubject.next(cart);
   }
 }
-
 const calcCart = (items: Item[]) => {
   const itemsPrice = round2(
     items.reduce((a, c) => a + c.price * c.quantity, 0)
   );
   const itemsCount = items.reduce((a, c) => a + c.quantity, 0);
-  const shippingPrice = itemsPrice == 0 ? 0 : itemsPrice > 200 ? 0 : 20;
-  const taxPrice = round2(itemsPrice * 0.15);
-  const totalPrice = round2(itemsPrice + shippingPrice + taxPrice);
+  const shippingPrice = itemsPrice === 0 ? 0 : itemsPrice > 200 ? 0 : 30;
+  const DiscountPrice = round2(itemsPrice * 0.1); // 10% discount
+  const totalPrice = round2(itemsPrice + shippingPrice - DiscountPrice);
 
   return {
     items: items,
     itemsCount,
     itemsPrice,
-    taxPrice,
+    DiscountPrice,
     shippingPrice,
     totalPrice,
   };

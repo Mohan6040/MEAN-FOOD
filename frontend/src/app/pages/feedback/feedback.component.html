@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="details">
+    <!-- feedback.component.html -->
+    <h1
+      style="
+        align-items: center;
+
+        font-size: 3em; /* Adjust the size as needed */
+        font-weight: bold;
+        text-align: center;
+      "
+    >
+      Feedback Form
+    </h1>
+    <form action="http://httpbin.org/post" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="comment">Comments:</label>
+      <textarea id="comment" name="comment" required></textarea>
+
+      <div class="radio-group">
+        <label>Ratings</label><br />
+        <label>
+          <input type="radio" name="commentRating" value="good" />
+          Good🤩 </label
+        ><br />
+        <label>
+          <input type="radio" name="commentRating" value="moderate" />
+          Moderate🙂 </label
+        ><br />
+        <label>
+          <input type="radio" name="commentRating" value="bad" /> Bad😐 </label
+        ><br />
+      </div>
+
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" />
+
+      <button  type="submit" class="Submit">
+        <a [routerLink]="['/successful']" [queryParams]="{ returnUrl: returnUrl }">SUBMIT</a></button>
+    </form>
+  </div>
+</div>

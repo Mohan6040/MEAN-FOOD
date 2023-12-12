@@ -24,7 +24,7 @@ export class HomeComponent {
     private cartService: CartService,
     private titleService: Title
   ) {
-    this.titleService.setTitle('Amazona');
+    this.titleService.setTitle('Foodie');
   }
 
   ngOnInit() {

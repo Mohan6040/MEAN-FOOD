@@ -54,6 +54,11 @@ import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { AdminProductEditComponent } from './pages/admin-product-edit/admin-product-edit.component';
 import { AdminUsersComponent } from './pages/admin-users/admin-users.component';
 import { AdminUserEditComponent } from './pages/admin-user-edit/admin-user-edit.component';
+import { RestaurantComponent } from './pages/restaurant/restaurant.component';
+import { FoodCategoryComponent } from './pages/food-category/food-category.component';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ResetsuccessfulComponent } from './pages/resetsuccessful/resetsuccessful.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +81,11 @@ import { AdminUserEditComponent } from './pages/admin-user-edit/admin-user-edit.
     AdminUsersComponent,
     AdminUserEditComponent,
     RatingComponent,
+    RestaurantComponent,
+    FoodCategoryComponent,
+    FeedbackComponent,
+    AboutComponent,
+    ResetsuccessfulComponent,
   ],
   imports: [
     BrowserModule,

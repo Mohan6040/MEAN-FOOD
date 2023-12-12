@@ -1,3 +1,4 @@
+<body>
 <mat-sidenav-container
   class="example-container"
   (backdropClick)="sidenav.close()"
@@ -10,7 +11,7 @@
   >
     <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
       <div>
-        <h5>Shopping Category</h5>
+        <h5>Food Category</h5>
       </div>
       <div>
         <button
@@ -36,7 +37,7 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <div id="app">
-      <mat-toolbar color="primary">
+      <mat-toolbar >
         <button
           (click)="sidenav.open()"
           mat-icon-button
@@ -44,7 +45,10 @@
         >
           <mat-icon>menu</mat-icon>
         </button>
-        <a mat-button routerLink="/">Amazona</a>
+        <a mat-button routerLink="/">
+          <img src="../assets/images/final.png" alt="Foodie Logo">
+        </a>
+        
 
         <div class="example-spacer">
           <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
@@ -56,12 +60,16 @@
                 name="query"
               />
             </mat-form-field>
-            <button class="hide-small-screen" mat-button color="secondary">
+            <button style="margin-left: 50px;" class="hide-small-screen" mat-button color="secondary">
               <mat-icon>search</mat-icon>
             </button>
           </form>
         </div>
+        
+        <a mat-menu-item routerLink="restaurant" style="margin-left: 380px; color: white; font-weight: bold;">Restaurant</a>
 
+        <a mat-menu-item routerLink="food-category" style=" margin-left: 20px; color: white; font-weight: bold;">Food Category</a>
+        <a mat-menu-item routerLink="about" style=" color: white; font-weight: bold;">About</a>
         <a mat-button routerLink="cart">
           <span
             *ngIf="itemsCount > 0"
@@ -73,6 +81,7 @@
           >
           <span *ngIf="itemsCount === 0">Cart</span>
         </a>
+
         <a mat-button *ngIf="!currentUser" routerLink="login">Login</a>
 
         <ng-container *ngIf="currentUser">
@@ -82,6 +91,7 @@
           <mat-menu #menu="matMenu">
             <a mat-menu-item routerLink="profile">Profile</a>
             <a mat-menu-item routerLink="order-history">Order Hisotry</a>
+            <a mat-menu-item routerLink="feedback">Feedback</a>
             <a *ngIf="currentUser" mat-menu-item routerLink="admin/dashboard"
               >Admin</a
             >
@@ -92,9 +102,47 @@
         </ng-container>
       </mat-toolbar>
       <div class="container">
+        
         <router-outlet></router-outlet>
-      </div>
-      <div class="footer">Amazona. All rights reserved.</div>
+        
+      </div><br><br><br><br><br><br>
+
+
+
+      
+        
+      
+
+        <div class="footer">
+
+          <a mat-button routerLink="/">
+            <img routerLink="" src="../assets/images/final.png" alt="Foodie Logo" >
+          </a>
+          <h1>Foodie. All rights reserved.</h1>
+          <div style="margin-top: 10px;">
+            <span style="margin-right: 10px;">Follow Us:</span>
+        
+            <a href="https://www.facebook.com/login.php/" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/facebook.png.png" alt="Facebook" style="width: 30px; height: 30px; cursor: pointer;">
+            </a>
+        
+            <a href="https://twitter.com/login" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/twitter.png.png" alt="Twitter" style="width: 30px; height: 30px; cursor: pointer;">
+            </a>
+        
+            <a href="https://www.instagram.com/?hl=en" target="_blank" rel="noopener noreferrer">
+              <img src="../assets/images/Instagram.png.png" alt="Instagram" style="width: 30px; height: 30px; cursor: pointer;">
+            </a>
+          </div><br>
+        </div>
+      
+      
+      
     </div>
+
   </mat-sidenav-content>
+  
 </mat-sidenav-container>
+
+</body>
+

@@ -5,11 +5,18 @@
 <ng-template #result>
   <div *ngIf="!error">
     <div class="back-to-result">
-      <a routerLink="/">Back to result</a>
+      <a routerLink="/">
+        <mat-icon>arrow_back</mat-icon> 
+      </a>
     </div>
     <div fxLayout="row wrap" fxLayoutGap="20px grid" fxLayoutGap.xs="0 grid">
       <div fxFlex="50%" fxFlex.xs="100%">
         <img mat-card-image [src]="product.image" />
+       
+        <div>
+          <button class="like-button" (click)="likeOrDislike()" [disabled]="buttonsDisabled">Like 👍</button>
+          <button class="dislike-button" (click)="likeOrDislike()" [disabled]="buttonsDisabled">Dislike 👎</button>
+        </div>
       </div>
 
       <div fxFlex="25%" fxFlex.xs="100%">
@@ -21,7 +28,7 @@
         ></app-rating>
         <mat-list>
           <mat-list-item> category: {{ product.category }}</mat-list-item>
-          <mat-list-item> brand: {{ product.brand }}</mat-list-item>
+          <mat-list-item> Foodtype: {{ product.brand }}</mat-list-item>
           <mat-list-item> description: {{ product.description }}</mat-list-item>
         </mat-list>
       </div>
@@ -32,7 +39,7 @@
             <mat-list-item>
               <div class="full-width" fxLayout="row">
                 <div fxFlex="50%">Price:</div>
-                <div fxFlex="50%">${{ product.price }}</div>
+                <div fxFlex="50%">{{ product.price | currency : "INR" }}</div>
               </div>
             </mat-list-item>
             <mat-list-item>

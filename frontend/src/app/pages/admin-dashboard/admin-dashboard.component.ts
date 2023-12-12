@@ -75,11 +75,11 @@ export class AdminDashboardComponent implements OnInit {
           datasets: [
             {
               data: summary.dailyOrders.map((x: any) => x.sales),
-              label: 'Sales',
+              label: 'Orders',
             },
             {
               data: summary.dailyOrders.map((x: any) => x.orders),
-              label: 'Orders',
+              label: 'Income',
             },
           ],
         };

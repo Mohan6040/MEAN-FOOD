@@ -1,40 +1,114 @@
-.example-spacer {
-  flex: 1 1 auto;
-  text-align: center;
+/* app.component.css */
+
+/* Toolbar Styles */
+mat-toolbar {
+  background-color: #da9a2a; /* Primary color */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Style for the link */
+a.mat-button {
+  text-decoration: none; /* Remove underline */
+  display: flex; /* Align items horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Style for the image */
+a.mat-button img {
+  width: 150px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
+  margin-right: 10px; /* Add some spacing between the image and text */
+}
+
+
+button.mat-icon-button {
+  color: white; /* Color for icon buttons */
+}
+
+/* Side Navigation Styles */
+.mat-sidenav-container {
+  height: 100vh; /* Set height to 100% of the viewport height */
+}
+
+.sidenav {
+  width: 250px; /* Set the width of the side navigation */
+  background-color: #263238; /* Dark background color */
+  color: white; /* Text color in side navigation */
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+.header {
+  padding: 16px;
+  border-bottom: 1px solid #37474f; /* Border at the bottom of the header */
+}
+
+.header h5 {
+  margin: auto;
+  font-size: 1.2em; /* Increase font size for header */
+}
+
+mat-nav-list a {
+  color: white; /* Text color for navigation items */
+  text-decoration: none; /* Remove underline from links */
+  display: block; /* Display as block for full width */
+  padding: 12px 16px; /* Add padding to navigation items */
+  transition: background 0.3s; /* Smooth background transition */
+}
+
+mat-nav-list a:hover {
+  background-color: #37474f; /* Darker background on hover */
+}
+
+/* Content Container Styles */
+mat-sidenav-content {
+  margin-left: 0; /* Reset margin for small screens */
+  padding: 16px;
 }
 
 .container {
-  margin: 0 auto;
-  padding: 20px;
-  /* max-width: 980px; */
-  min-height: 70vh;
-}
-.footer {
-  text-align: center;
+  padding: 16px;
 }
 
-.sidenav .header {
+/* Footer Styles */
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  background-color: #e89b28;
+  color: rgb(12, 11, 11);
+  text-align: center;
   padding: 10px;
 }
 
-form {
-  font-size: 14px;
+.footer a {
+  text-decoration: none;
 }
-.mat-toolbar-row,
-.mat-toolbar-single-row {
-  padding: 0;
+
+.footer img {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-right: 10px;
 }
-.mat-form-field {
-  width: 100px;
+
+.footer h1 {
+  margin: 0;
 }
-.mat-button {
-  padding: 0;
+
+.footer span {
+  margin-right: 10px;
 }
-@media only screen and (max-width: 480px) {
-  .hide-small-screen {
-    display: none;
+
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .mat-sidenav-content {
+    margin-left: 0; /* Reset margin for small screens */
   }
-  .mat-vertical-content {
-    padding: 0 !important;
+
+  .sidenav {
+    width: 100%; /* Make the side navigation full width on small screens */
   }
 }

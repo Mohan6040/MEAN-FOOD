@@ -50,4 +50,22 @@ export class AdminUsersComponent implements OnInit {
       }
     );
   }
+  deleteUser(user: User) {
+    const confirmDelete = confirm(`Are you sure you want to delete user ${user.name}?`);
+
+    if (confirmDelete) {
+      this.userService.deleteuser(user._id).subscribe(
+        () => {
+          this.snackBar.open('User deleted successfully', '', {
+            panelClass: 'success-snackbar',
+          });
+          this.getUsers();
+        },
+        (error: any) => {
+          console.error('Error deleting user', error);
+          this.snackBar.open('Error deleting user', '', { panelClass: 'error-snackbar' });
+        }
+      );
+    }
+  }
 }

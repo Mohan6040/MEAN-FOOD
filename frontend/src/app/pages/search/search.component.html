@@ -23,7 +23,7 @@
             </mat-card-content>
           </a>
           <mat-card-actions>
-            <span>${{ product.price }}</span>
+            <span>{{ product.price | currency: 'INR' }}</span>
             <button mat-button (click)="addToCart(product)">ADD TO CART</button>
           </mat-card-actions>
         </mat-card>

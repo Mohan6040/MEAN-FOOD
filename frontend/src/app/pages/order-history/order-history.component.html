@@ -23,8 +23,9 @@
       <!-- Price Column -->
       <ng-container matColumnDef="totalPrice">
         <th mat-header-cell *matHeaderCellDef>TOTAL PRICE</th>
-        <td mat-cell *matCellDef="let element">${{ element.totalPrice }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.totalPrice | currency: 'INR' }}</td>
       </ng-container>
+      
 
       <!-- Is Paid Column -->
       <ng-container matColumnDef="isPaid">

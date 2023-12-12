@@ -7,6 +7,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { ProductService } from './services/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +18,7 @@ export class AppComponent {
   sidenav!: MatSidenav;
   categories: [] = [];
   searchForm: FormGroup;
-  title = 'Amazona';
+  title = 'Foodie';
   itemsCount: number = 0;
   currentUser: UserInfo | null = null;
 

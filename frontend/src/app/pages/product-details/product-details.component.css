@@ -9,3 +9,45 @@ mat-card {
   max-width: 400px;
   text-align: center;
 }
+/* styles.css */
+.like-dislike-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Add this to your component's stylesheet */
+
+
+h2 {
+  color: #333;
+}
+
+p {
+  color: #666;
+  margin: 5px 0;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button.like-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+button.dislike-button {
+  background-color: #f44336; /* Red */
+  color: white;
+}
+
+button:disabled {
+  background-color: #cccccc; /* Gray */
+  cursor: not-allowed;
+}

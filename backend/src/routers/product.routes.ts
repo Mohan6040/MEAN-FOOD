@@ -1,18 +1,18 @@
-import express, { Request, Response } from 'express';
-import asyncHandler from 'express-async-handler';
-import { User, UserModel } from '../models/user.model';
-import { isAdmin, isAuth } from '../utils';
-import { Product, ProductModel } from '../models/product.model';
-import { products, users } from '../sample-data';
+import express, { Request, Response } from "express";
+import asyncHandler from "express-async-handler";
+import { User, UserModel } from "../models/user.model";
+import { isAdmin, isAuth } from "../utils";
+import { Product, ProductModel } from "../models/product.model";
+import { products, users } from "../sample-data";
 
 export const productRouter = express.Router();
 
 productRouter.get(
-  '/',
+  "/",
   asyncHandler(async (req: Request, res: Response) => {
-    const name = (req.query.name || '') as string;
-    const category = (req.query.category || '') as string;
-    const order = (req.query.order || '') as string;
+    const name = (req.query.name || "") as string;
+    const category = (req.query.category || "") as string;
+    const order = (req.query.order || "") as string;
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
     const max =
@@ -22,16 +22,16 @@ productRouter.get(
         ? Number(req.query.rating)
         : 0;
 
-    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+    const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
     const categoryFilter = category ? { category } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
     const ratingFilter = rating ? { rating: { $gte: rating } } : {};
     const sortOrder =
-      order === 'lowest'
+      order === "lowest"
         ? { price: 1 }
-        : order === 'highest'
+        : order === "highest"
         ? { price: -1 }
-        : order === 'toprated'
+        : order === "toprated"
         ? { rating: -1 }
         : { _id: -1 };
     const products = await ProductModel.find({
@@ -45,13 +45,13 @@ productRouter.get(
 );
 
 productRouter.get(
-  '/paged',
+  "/paged",
   asyncHandler(async (req: Request, res: Response) => {
     const pageSize = 3;
     const page = Number(req.query.pageNumber) || 1;
-    const name = (req.query.name || '') as string;
-    const category = (req.query.category || '') as string;
-    const order = (req.query.order || '') as string;
+    const name = (req.query.name || "") as string;
+    const category = (req.query.category || "") as string;
+    const order = (req.query.order || "") as string;
     const min =
       req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
     const max =
@@ -61,16 +61,16 @@ productRouter.get(
         ? Number(req.query.rating)
         : 0;
 
-    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
+    const nameFilter = name ? { name: { $regex: name, $options: "i" } } : {};
     const categoryFilter = category ? { category } : {};
     const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
     const ratingFilter = rating ? { rating: { $gte: rating } } : {};
     const sortOrder =
-      order === 'lowest'
+      order === "lowest"
         ? { price: 1 }
-        : order === 'highest'
+        : order === "highest"
         ? { price: -1 }
-        : order === 'toprated'
+        : order === "toprated"
         ? { rating: -1 }
         : { _id: -1 };
     const count = await ProductModel.count({
@@ -93,15 +93,15 @@ productRouter.get(
 );
 
 productRouter.get(
-  '/categories',
+  "/categories",
   asyncHandler(async (req: Request, res: Response) => {
-    const categories = await ProductModel.find().distinct('category');
+    const categories = await ProductModel.find().distinct("category");
     res.send(categories);
   })
 );
 
 productRouter.get(
-  '/seed',
+  "/seed",
   asyncHandler(async (req: Request, res: Response) => {
     // await UserModel.remove();
     // await ProductModel.remove();
@@ -112,7 +112,7 @@ productRouter.get(
 );
 
 productRouter.get(
-  '/slug/:slug',
+  "/slug/:slug",
   asyncHandler(async (req: Request, res: Response) => {
     const product = await ProductModel.findOne({
       slug: req.params.slug,
@@ -120,39 +120,39 @@ productRouter.get(
     if (product) {
       res.send(product);
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: "Product Not Found" });
     }
   })
 );
 
 productRouter.get(
-  '/:id',
+  "/:id",
   asyncHandler(async (req: Request, res: Response) => {
     const product = await ProductModel.findById(req.params.id);
     if (product) {
       res.send(product);
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: "Product Not Found" });
     }
   })
 );
 
 productRouter.post(
-  '/',
+  "/",
   isAuth,
   isAdmin,
   asyncHandler(async (req: Request, res: Response) => {
     const product = await ProductModel.create({
-      name: 'sample name ' + Date.now(),
-      image: '../assets/images/p1.jpg',
+      name: "sample name " + Date.now(),
+      image: "../assets/images/p1.jpg",
       price: 0,
-      slug: 'sample-slug-' + Date.now(),
-      category: 'sample category',
-      brand: 'sample brand',
+      slug: "sample-slug-" + Date.now(),
+      category: "sample category",
+      brand: "sample brand",
       countInStock: 0,
       rating: 0,
       numReviews: 0,
-      description: 'sample description',
+      description: "sample description",
     } as Product);
 
     const createdProduct = await product.save();
@@ -164,9 +164,15 @@ productRouter.put(
   isAuth,
   isAdmin,
   asyncHandler(async (req: Request, res: Response) => {
-    const productId = req.params.id;
-    const product = await ProductModel.findById(productId);
-    if (product) {
+    try {
+      const productId = req.params.id;
+      const product = await ProductModel.findById(productId);
+
+      if (!product) {
+        return res.status(404).send({ message: 'Product Not Found' });
+      }
+
+      // Update product fields
       product.name = req.body.name;
       product.slug = req.body.slug;
       product.price = req.body.price;
@@ -175,31 +181,35 @@ productRouter.put(
       product.brand = req.body.brand;
       product.countInStock = req.body.countInStock;
       product.description = req.body.description;
+
+      // Save the updated product
       const updatedProduct = await product.save();
-      res.send({ message: 'Product Updated', product: updatedProduct });
-    } else {
-      res.status(404).send({ message: 'Product Not Found' });
+
+      res.status(200).send({ message: 'Product Updated', product: updatedProduct });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({ message: 'Internal Server Error' });
     }
   })
 );
 
 productRouter.delete(
-  '/:id',
+  "/:id",
   isAuth,
   isAdmin,
   asyncHandler(async (req: Request, res: Response) => {
     const product = await ProductModel.findById(req.params.id);
     if (product) {
       const deleteProduct = await product.remove();
-      res.send({ message: 'Product Deleted', product: deleteProduct });
+      res.send({ message: "Product Deleted", product: deleteProduct });
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: "Product Not Found" });
     }
   })
 );
 
 productRouter.post(
-  '/:id/reviews',
+  "/:id/reviews",
   isAuth,
   asyncHandler(async (req: Request, res: Response) => {
     const productId = req.params.id;
@@ -208,7 +218,7 @@ productRouter.post(
       if (product.reviews.find((x) => x.name === req.user.name)) {
         return res
           .status(400)
-          .send({ message: 'You already submitted a review' });
+          .send({ message: "You already submitted a review" });
       }
       const review = {
         name: req.user.name,
@@ -223,11 +233,11 @@ productRouter.post(
       console.log(product.reviews);
       const updatedProduct = await product.save();
       res.status(201).send({
-        message: 'Review Created',
+        message: "Review Created",
         review: updatedProduct.reviews[updatedProduct.reviews.length - 1],
       });
     } else {
-      res.status(404).send({ message: 'Product Not Found' });
+      res.status(404).send({ message: "Product Not Found" });
     }
   })
 );
